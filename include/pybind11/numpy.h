@@ -11,6 +11,7 @@
 
 #include "pybind11.h"
 #include "complex.h"
+#include "surreal.h"
 #include <numeric>
 #include <algorithm>
 #include <array>
@@ -245,6 +246,7 @@ template <typename T> struct is_std_array : std::false_type { };
 template <typename T, size_t N> struct is_std_array<std::array<T, N>> : std::true_type { };
 template <typename T> struct is_complex : std::false_type { };
 template <typename T> struct is_complex<std::complex<T>> : std::true_type { };
+template <typename T> struct is_complex<Surreal<T>> : std::true_type { };
 
 template <typename T> struct array_info_scalar {
     typedef T type;
